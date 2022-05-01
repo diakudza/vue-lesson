@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue"></script>
+    <title>Document</title>
+</head>
+<body>
+<div class="sample">
+    <h2> {{ title }}</h2>
+    <div v-if="showContent">
+        <p> users </p>
+        <ul>
+            <li v-for="user in users" :key="user.id">{{user.id}} {{ user.name}} {{ user.age}}</li>
+        </ul>
+    </div>
+    <button @click="getContent" > show</button>
+</div>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                title: 'DATA',
+                showContent: false,
+                user: {
+                    name: "jack",
+                    email: 'info@toi.ru'
+                },
+                users: [
+                    { id: 123, name: 'jack', email: 'info@toi.ru', age:22},
+                    { id: 124, name: 'ivan', email: 'cal@toi.ru', age:25},
+                    { id: 125, name: 'alex', email: 'fox@toi.ru', age:30},
+                ]
+            }
+        },
+        methods: {
+             getContent () {
+                this.showContent = !this.showContent
+                 console.log(this.users)
+             }
+        }
+    }).mount('.sample');
+
+</script>
+</body>
+
+</html>
